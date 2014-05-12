@@ -9,6 +9,15 @@ if [[ "$ENABLE_DEBUG" == 1 ]]; then
 else
 	DEBUG="";
 fi
+if [[ "$ENABLE_IA32" == 1 ]]; then
+	sudo apt-get update -qq;
+	sudo apt-get install -y ia32-libs libc6-i386 gcc-multilib g++-multilib;
+	export CFLAGS='-m32';
+	export CPPFLAGS='-m32';
+	export CCASFLAGS='-m32';
+	export LDFLAGS='-m32 -L/lib32';
+fi
+
 ./buildconf --force
 ./configure --quiet \
 $DEBUG \
