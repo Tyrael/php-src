@@ -11,7 +11,14 @@ else
 fi
 if [[ "$ENABLE_IA32" == 1 ]]; then
 	sudo apt-get update -qq;
-	sudo apt-get install -y ia32-libs libc6-i386 gcc-multilib g++-multilib;
+	# work around https://bugs.launchpad.net/ubuntu/precise/+source/libxml2/+bug/987502
+	sudo mv /usr/bin/xml2-config /usr/bin/xml2-config.x86_64;
+	sudo apt-get install libxml2-dev:i386;
+	sudo mv /usr/bin/xml2-config /usr/bin/xml2-config.i386;
+	sudo cp /usr/bin/xml2-config.x86_64 /usr/bin/xml2-config;
+	sudo ldconfig;
+	# end of workaround
+        sudo apt-get install -y ia32-libs libc6-i386 gcc-multilib g++-multilib zlib1g-dev:i386;
 	export CFLAGS='-m32';
 	export CPPFLAGS='-m32';
 	export CCASFLAGS='-m32';
