@@ -4,6 +4,7 @@ sudo apt-get install -y aptitude;
 
 if [[ "$ENABLE_IA32" == 1 ]]; then
 	# workaround for  https://bugs.launchpad.net/ubuntu/+source/freetype/+bug/990982
+	sudo aptitude remove binutils cpp gcc;
 	sudo aptitude install -y libc6-dev libc6-dev:i386 linux-libc-dev:i386 binutils:i386 cpp:i386 gcc:i386;
 	sudo aptitude install -y gcc-multilib g++-multilib;
 
