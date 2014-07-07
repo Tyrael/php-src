@@ -12,7 +12,7 @@ fi
 if [[ "$ENABLE_IA32" == 1 ]]; then
 	sudo apt-get update -qq;
 	sudo apt-get install -y aptitude;
-	sudo aptitude install -y gcc-multilib g++-multilib gcc:i386 binutils:i386 libc6-dev libc6-dev:i386;
+	sudo aptitude install -y gcc-multilib g++-multilib libc6-dev libc6-dev:i386;
 	sudo mv /usr/bin/xml2-config /usr/bin/xml2-config.x86_64;
 	sudo aptitude install -y libxml2-dev:i386;
 	sudo mv /usr/bin/xml2-config /usr/bin/xml2-config.i386;
