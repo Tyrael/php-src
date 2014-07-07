@@ -4,8 +4,8 @@ sudo apt-get install -y aptitude;
 
 if [[ "$ENABLE_IA32" == 1 ]]; then
 	# workaround for  https://bugs.launchpad.net/ubuntu/+source/freetype/+bug/990982
-	sudo aptitude remove -y binutils cpp gcc g++;
-	sudo aptitude install -y libc6-dev libc6-dev:i386 linux-libc-dev:i386 binutils:i386 cpp:i386 gcc:i386;
+	#sudo aptitude remove -y binutils cpp gcc g++;
+	#sudo aptitude install -y libc6-dev libc6-dev:i386 linux-libc-dev:i386 binutils:i386 cpp:i386 gcc:i386;
 	sudo aptitude install -y gcc-multilib g++-multilib;
 
 	sudo apt-get install -y --without-recommends re2c:i386;
@@ -15,10 +15,10 @@ if [[ "$ENABLE_IA32" == 1 ]]; then
 	sudo mv /usr/bin/xml2-config /usr/bin/xml2-config.i386;
 	sudo cp /usr/bin/xml2-config.x86_64 /usr/bin/xml2-config;
 	# sudo aptitude install -y libicu-dev:i386 # not multiarch ready yet: https://bugs.launchpad.net/ubuntu/+source/icu/+bug/992439
-	sudo aptitude install -y --without-recommends zlib1g-dev:i386;
-	sudo aptitude install -y --without-recommends libgmp-dev:i386;
-	sudo aptitude install -y --without-recommends libmcrypt-dev:i386;
-	sudo aptitude install -y --without-recommends libtidy-dev:i386;
+	#sudo aptitude install -y --without-recommends zlib1g-dev:i386;
+	#sudo aptitude install -y --without-recommends libgmp-dev:i386;
+	#sudo aptitude install -y --without-recommends libmcrypt-dev:i386;
+	#sudo aptitude install -y --without-recommends libtidy-dev:i386;
 	export CFLAGS='-m32';
 	export CPPFLAGS='-m32';
 	export CCASFLAGS='-m32';
