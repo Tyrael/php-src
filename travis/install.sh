@@ -1,9 +1,10 @@
 #!/bin/bash
 sudo apt-get update -qq;
 sudo apt-get install -y aptitude;
-sudo apt-get install re2c;
 
 if [[ "$ENABLE_IA32" == 1 ]]; then
+	sudo apt-get install re2c:i386;
+
 	# workaround for  https://bugs.launchpad.net/ubuntu/+source/freetype/+bug/990982
 	sudo aptitude install -y libc6-dev libc6-dev:i386;
 
@@ -22,5 +23,7 @@ if [[ "$ENABLE_IA32" == 1 ]]; then
 	export CCASFLAGS='-m32';
 	export LDFLAGS='-m32 -L/lib32';
 else
+	sudo apt-get install re2c;
+
 	sudo aptitude install -y libgmp-dev libicu-dev libmcrypt-dev libtidy-dev;
 fi
