@@ -4,6 +4,9 @@ sudo apt-get install -y aptitude;
 sudo apt-get install re2c;
 
 if [[ "$ENABLE_IA32" == 1 ]]; then
+	# workaround for  https://bugs.launchpad.net/ubuntu/+source/freetype/+bug/990982
+	sudo aptitude install -y libc6-dev libc6-dev:i386;
+
 	sudo aptitude install -y gcc-multilib g++-multilib;
 	sudo mv /usr/bin/xml2-config /usr/bin/xml2-config.x86_64;
 	sudo aptitude install -y libxml2-dev:i386;
